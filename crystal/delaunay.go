@@ -8,7 +8,7 @@ import (
 )
 
 // DealaunayReduce reduce lattice to standard lattice
-func DealaunayReduce(latt *Lattice, prec float64) (*Lattice, error) {
+func DelaunayReduce(latt *Lattice, prec float64) (*Lattice, error) {
 	bs := make(BasisSlice, 7)
 	bs[0], bs[1], bs[2] = latt.A(), latt.B(), latt.C()
 	bs[3] = bs[0].Add(bs[1]).Add(bs[2]).Scale(-1) // b3 = -b0-b1-b2

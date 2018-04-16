@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestDealaunayReduce(t *testing.T) {
+func TestDelaunayReduce(t *testing.T) {
 	var prec = 1e-5
 	var tests = []struct {
 		oLatt  *Lattice
@@ -38,12 +38,12 @@ func TestDealaunayReduce(t *testing.T) {
 	}
 
 	for i, test := range tests {
-		got, err := DealaunayReduce(test.oLatt, prec)
+		got, err := DelaunayReduce(test.oLatt, prec)
 		if err != nil {
-			t.Errorf("%d: can't DealaunayReduce(%v, %f)", i, test.oLatt, prec)
+			t.Errorf("%d: can't DelaunayReduce(%v, %f)", i, test.oLatt, prec)
 		}
 		if !reflect.DeepEqual(got, test.wanted) {
-			t.Errorf("%d: DealaunayReduce(%v, %f) = %v, want %v", i, test.oLatt, prec, got, test.wanted)
+			t.Errorf("%d: DelaunayReduce(%v, %f) = %v, want %v", i, test.oLatt, prec, got, test.wanted)
 		}
 	}
 }
