@@ -6,27 +6,7 @@ import (
   "strconv"
 )
 
-type CoorType int
-
-const (
-  Cartesian CoorType = iota
-  Fractional
-)
-
-type Poscar struct {
-  //
-  System string
-  //
-  Lattice []float64
-  //
-  Coordinate CoorType
-  //
-  Positions []float64
-  //
-  Types []string
-}
-
-func ParsePoscar(txt string) (*Poscar, error) {
+func ParsePoscar(txt string) (*Cell, error) {
   lines := strings.Split(txt, "\n")
 
   system := lines[0]
@@ -84,7 +64,7 @@ func ParsePoscar(txt string) (*Poscar, error) {
     positions[i*3+2], _ = strconv.ParseFloat(vs[2], 64)
   }
 
-  poscar := &Poscar {
+  poscar := &Cell {
     System: system,
     Lattice: lattice,
     Coordinate: ctype,
