@@ -7,7 +7,7 @@ import (
 )
 
 func ParsePoscar(txt string) (*Cell, error) {
-  lines := strings.Split(txt, "\n")
+  lines := strings.Split(strings.Replace(txt, "\r\n", "\n", -1), "\n")
 
   system := lines[0]
 
