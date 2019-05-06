@@ -11,7 +11,7 @@ func ParsePoscar(txt string) (*Cell, error) {
 
   system := lines[0]
 
-  scale, err := strconv.ParseFloat(lines[1], 64)
+  scale, err := strconv.ParseFloat(strings.TrimSpace(lines[1]), 64)
   if err != nil {
     return nil, fmt.Errorf("parse poscar scale, %v", err)
   }
@@ -46,13 +46,13 @@ func ParsePoscar(txt string) (*Cell, error) {
   }
 
   var coorLine int = 7
-  s := strings.ToUpper(lines[7][:1])
+  s := strings.ToUpper(strings.TrimSpace(lines[7])[:1])
   if s == "S" {
     coorLine = 8
   }
 
   var ctype CoorType = Fractional
-  ct := strings.ToUpper(lines[coorLine][:1])
+  ct := strings.ToUpper(strings.TrimSpace(lines[coorLine])[:1])
   if ct == "K" || ct == "C" {
     ctype = Cartesian
   }
