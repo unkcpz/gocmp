@@ -10,8 +10,8 @@ func TestPoscarRead(t *testing.T) {
 4.0 0.0 0.0
 0.0 4.0 0.0
 0.0 0.0 4.0
-H
-2
+B N
+1 1
 selective dynamics
 Karti
 0.0 0.0 0.0
@@ -37,10 +37,10 @@ Karti
     }
   }
 
-  expect_types := []string{"H", "H"}
+  expect_types := []string{"B", "N"}
   for i, _ := range expect_types {
     if poscar.Types[i] != expect_types[i] {
-      t.Error("poscar types read fail")
+      t.Errorf("poscar types read fail: %v", poscar.Types)
       break
     }
   }
