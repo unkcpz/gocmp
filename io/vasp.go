@@ -29,9 +29,7 @@ func ParsePoscar(txt string) (*Cell, error) {
 
   es := strings.Fields(lines[5])
   ntype := make([]int, 0, 0)
-  fmt.Println(ntype)
   str := strings.Fields(lines[6])
-  fmt.Println(str)
   for _, s := range str {
     n, _ := strconv.Atoi(s)
     ntype = append(ntype, n)
@@ -41,7 +39,6 @@ func ParsePoscar(txt string) (*Cell, error) {
     natoms += v
   }
   types := make([]string, 0, 0)
-  fmt.Println(ntype)
   for i, n := range ntype {
     for j:=0; j<n; j++ {
       types = append(types, es[i])
