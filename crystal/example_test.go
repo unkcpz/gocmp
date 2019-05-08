@@ -4,6 +4,20 @@ import (
   "fmt"
 )
 
+func ExampleGetSpacegroup() {
+  // Triangle lattice
+	c, _ := NewCell(
+		[]float64{2, 0, 0, 1, 1.732050, 0, 0, 0, 16},
+		[]float64{0, 0, 0},
+		[]int{1},
+		false,
+	)
+  fmt.Println(c.Spacegroup(1e-5))
+
+  // Output:
+  // P6/mmm (191)
+}
+
 func ExampleGetSymmetry() {
   // Triangle lattice
 	c, _ := NewCell(

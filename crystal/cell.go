@@ -109,6 +109,11 @@ func (c *Cell) Refine(symprec float64) {
 	c.Natom = len(newElem)
 }
 
+func (c *Cell) Spacegroup(symprec float64) string {
+  ds := spgolib.NewDataset(c.LatticeSlice(), c.PositionSlice(), c.Elem, symprec)
+	return fmt.Sprintf("%s (%d)", ds.SpaceSymbol, ds.SpaceNumber)
+}
+
 // Symmetry find rotation and translation of cell
 func (c *Cell) Symmetry(symprec float64) (nop int, rotations []Rotation, transitions []Translation) {
   ds := spgolib.NewDataset(c.LatticeSlice(), c.PositionSlice(), c.Elem, symprec)
